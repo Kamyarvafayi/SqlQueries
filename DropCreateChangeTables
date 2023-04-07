@@ -1,0 +1,43 @@
+-- creating or droping tables
+--create Database PurchaseDatabase
+-- drop database PurcahseDatabase
+
+-- use PurchaseDatabase
+-- Creating Tables
+create table Products(ProductsId int Identity(1,1) Primary key not null, ProductName varchar(50) not null, ProductPrice decimal(4,4) not null);
+create table Purchaser(PurcahsorId int identity(1,1) primary Key not null, firstName varchar(60) null, LastName varchar(100) not null, CustomerAddress varchar(200) null);
+create Table Purchases(Id bigint identity(10,10) primary key not null, ProductId int not null, CustomerId int not null, PurcahseCount bigint not null, PurchaseDate date null);
+
+
+
+-- changing existing tables
+--1. renamin a table
+exec sp_rename 'Purchaser', 'Customers';
+--2. adding a new column
+alter table Customers add CustomerEmail Varchar(200) null;
+--3. drop an existing column
+alter table Customers drop Column CustomerEmail;
+-- 4. change datatype
+alter table Products alter Column ProductPrice decimal(10,2);
+
+
+-- droping tables
+--drop table Products
+--drop table Customers
+--drop table Purchases
+
+
+-- Inserting rows into tables
+--Insert Into	Customers (firstName, LastName, CustomerAddress) values('Kamyar', 'Vafaei', Null);
+--Insert Into	Customers (firstName, LastName, CustomerAddress) values('Mahyar', 'Vafaei', '9, street, city, country'),
+--('Ramtin', 'Rostamian', null), ('Ali','Sohrabi','25,street 2, Tehran, Iran');
+
+--Insert Into	Products (ProductName, ProductPrice) values('vegtable', 14.9), ('meat', 20.2),
+--('Diaper', 5.0), ('milk',2.05);
+
+--Insert Into	Purchases(ProductID, CustomerID, PurcahseCount, PurchaseDate) values(2, 1, 21, '2023-02-23'), (1, 1, 5, '2021-04-22'),
+--(3, 2, 10, '2023-03-01'), (4, 2, 5, '2023-10-15'), (1, 4, 7, '2010-07-30'), (4, 3, 500, '2025-12-17');
+
+-- deleting a row
+Insert Into	Purchases(ProductID, CustomerID, PurcahseCount, PurchaseDate) values(4, 3, 200, '2024-02-23')
+delete from Purchases where PurchaseDate = '2024-02-23';
