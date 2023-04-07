@@ -1,0 +1,31 @@
+use PurchaseDatabase
+
+select * from Customers
+
+select * from Customers where PurcahsorId>=3
+
+select firstName, firstName+LastName as FullName from Customers
+
+-- order by
+select * from Products order by ProductName Asc
+select * from Products order by ProductName Desc
+
+
+select * from Products where ProductName like '%ia%' 
+select * from Products where ProductName like '%i%' order by ProductName
+select * from Products where ProductName like '_i%'
+
+select *, ProductPrice*2 as DoubledProduct from Products where ProductName like '%ia%'
+select *, ProductPrice*2 as DoubledProduct from Products where ProductName like '%ia%' or ProductName like '%er'
+select *, ProductPrice*2 as DoubledProduct from Products where ProductName like '%ia%' and ProductPrice <100
+select *, ProductPrice*2 as DoubledProduct from Products where ProductName like '%ia%' and ProductPrice between 0 and 10
+select *, ProductPrice*2 as DoubledProduct from Products where ProductName not like '%a%'
+select *, ProductPrice*2 as DoubledProduct from Products where ProductName in('milk','vegtable')
+
+select * from Customers where CustomerAddress is null
+select * from Customers where CustomerAddress is not null
+
+-- Group by
+select ProductId, Count(PurcahseCount) as Pcount from Purchases group by ProductId
+select CustomerId, Count(PurcahseCount) as Pcount from Purchases group by CustomerId
+select CustomerId, Count(PurcahseCount) as Pcount from Purchases group by CustomerId having CustomerId>2
