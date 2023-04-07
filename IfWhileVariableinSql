@@ -1,0 +1,32 @@
+declare @ColumnName varchar(10) = 'FirstName'
+
+
+if @ColumnName = 'FirstName'
+	select * from Customers order by  firstName
+else if @ColumnName = 'LastName'
+	select * from Customers order by LastName 
+else 
+	select * from Customers order by CustomerAddress
+
+
+select * from Customers 
+order by case 
+	when @ColumnName = 'FirstName' then firstName
+	when @ColumnName = 'LastName' then LastName
+	else CustomerAddress
+	end
+
+select * from Customers 
+order by case @ColumnName
+	when 'FirstName' then firstName
+	when 'LastName' then LastName
+	else CustomerAddress
+	end
+
+declare @Counter int = 1
+while @Counter <= 4
+	begin
+	insert into Purchases values(@Counter, @Counter, @Counter, '2012-08-30')
+	print @counter
+	set @Counter = @Counter+1
+	end
