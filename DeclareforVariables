@@ -1,0 +1,8 @@
+declare @variable int = 100
+set @variable = 221
+select @variable
+
+
+declare @TableVar Table (FirstName varchar(50), LastName varchar(200), score decimal(5,2))
+insert into @Tablevar values('Kamyar', 'Vafayi', 18.51), ('Mahyar', 'Vafayi', 19.75);
+select * from @TableVar where score>19
